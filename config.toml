@@ -10,7 +10,7 @@ layoutdir = "layouts"
 publishdir = "public"
 
 author = "David Stainton"
-title = "David Stainton"
+title = "David Stainton's Portfolio"
 
 theme = "hugo-goa"
 
@@ -46,20 +46,23 @@ socialmarkup = true
 
 ## Main Menu
 [[menu.main]]
+    name = "Public Speaking"
+    identifier = "speaking"
+    weight = 50
+    url = "/publicspeaking/"
+
+[[menu.main]]
     name = "Open Source Software Projects"
     weight = 100
     identifier = "projects"
     url = "/projects/"
+
 [[menu.main]]
     name = "Technical Writing"
     identifier = "documentation"
     weight = 200
     url = "/docs/"
-[[menu.main]]
-    name = "Public Speaking"
-    identifier = "speaking"
-    weight = 300
-    url = "/publicspeaking/"
+
 [[menu.main]]
     name = "I mentor university students"
     identifier = "mentorships"

@@ -5,12 +5,10 @@ date = ""
 draft = false
 slug = ""
 tags = ["projects"]
-title = "Open Source Projects"
+title = "David Stainton's Open Source Projects"
 
 showpagemeta = false
 +++
-
-David Stainton's open source and free software projects:
 
 The following specified projects are a small sample of my open source
 contributions and is not by any means an exhaustive list of the
@@ -18,12 +16,14 @@ software projects I've worked on. I have for instance, contributed to
 various proprietary software projects which of course will not be
 mentioned here.
 
-Below you will find the repeated theme of networking and cryptography. Of course
-I know how to load information from databases, transform data, etc. However most
-of my independent computer security research involves minimal databases usage and
-mostly involves networking and cryptography; my apologies if this is not the skillset you
-are looking for. These projects represent how I spend my free time and do not represent
-the totality of my skills as a software developer.
+Below you will find the repeated theme of networking and
+cryptography. Of course I know about high performance computing,
+databases, data transformations, systems programming etc. However
+most of my independent computer security research involves involves
+networking and cryptography; my apologies if this is not the skillset
+you are looking for. These projects represent how I spend my free time
+and do not represent the totality of my skills as a software
+developer.
 
 See [David Stainton's github profile](https://github.com/david415) for additional open source projects.
 
@@ -32,9 +32,9 @@ See [David Stainton's github profile](https://github.com/david415) for additiona
 
 * [Noise based cryptographic network protocol for mixnets](https://github.com/sphinx-cryptography/mix_link)
 * [Rust ffi bindings to AEZ written in C](https://github.com/sphinx-cryptography/aez)
-* [Sphinx cryptographic packet format create](https://github.com/sphinx-cryptography/rust-sphinxcrypto)
-* [Lioness wide block cipher crate](https://github.com/sphinx-cryptography/rust-lioness)
-* [ECDH wrapper crate](https://github.com/sphinx-cryptography/ecdh_wrapper)
+* [Sphinx cryptographic packet format](https://github.com/sphinx-cryptography/rust-sphinxcrypto)
+* [Lioness wide block cipher](https://github.com/sphinx-cryptography/rust-lioness)
+* [ECDH wrapper](https://github.com/sphinx-cryptography/ecdh_wrapper)
 * [My solutions to some of the cryptopals challenges](https://github.com/david415/cryptopals)
 
 **Golang**
@@ -122,19 +122,27 @@ Bulb is useful for Tor integration and this feature I added allows for Go applic
 
 **Python**
 
-Most of my Python experience involves async IO networking with Twisted, however, I've also used Tornado and blocking IO.
-Many of my Python project involve networking and cryptography; this is after all, the main theme repeated throughout my work portfolio.
-I don't have much experience with Python 3.
+Most of my Python experience involves async IO networking with
+Twisted, however, I've also used Tornado and blocking IO. Many of my
+Python project involve networking and cryptography; this is after all,
+the main theme repeated throughout my work portfolio.  I don't have
+much experience with Python 3.
 
 * [Contributed various feature patches to the Tahoe-LAFS project](https://github.com/tahoe-lafs/tahoe-lafs)
 
 * [Forked Ian Goldberg's reference implementation of the Sphinx cryptographic packet format](https://github.com/applied-mixnetworks/sphinxmixcrypto)
 
-I made the Sphinx cryptographic packet library compatible with Python 2 and Python 3. I've also upgraded some of the cryptographic primitives.
+I made the Sphinx cryptographic packet library compatible with Python
+2 and Python 3. I've also upgraded some of the cryptographic
+primitives.
 
 * [Wrote a Lioness wide block cipher library](https://github.com/david415/pylioness)
 
 * [Wrote a active network scanner for a Linux kernel vulnerability that affected the Tor network](https://github.com/david415/scan_tor_rfc5961) and [sent a report to the tor-dev mailing list](https://lists.torproject.org/pipermail/tor-reports/2016-December/001105.html)
+
+I came up with a Tor guard discovery attack involving this Linux
+kernel vulnerability however my analysis remains unpublished due to
+ethical considerations.
 
 * [Wrote a Tor network partition detection scanner](https://github.com/david415/tor_partition_scanner)
 
@@ -147,5 +155,7 @@ I made the Sphinx cryptographic packet library compatible with Python 2 and Pyth
 * [Wrote a socat-like tool using Twisted](https://github.com/david415/twistedcat)
 
 * [Wrote a Tor onion transport VPN](https://github.com/david415/onionvpn)
+
+This is essentially a VPN which uses Tor onions as the network transport.
 
 * [Wrote Twisted http to tor proxy](https://github.com/david415/txtorhttpproxy)

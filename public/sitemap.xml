@@ -8,6 +8,10 @@
   </url>
   
   <url>
+    <loc>https://sphinx.rs/projects/</loc>
+  </url>
+  
+  <url>
     <loc>https://sphinx.rs/</loc>
     <priority>0</priority>
   </url>
@@ -42,10 +46,6 @@
   
   <url>
     <loc>https://sphinx.rs/mentorships/</loc>
-  </url>
-  
-  <url>
-    <loc>https://sphinx.rs/projects/</loc>
   </url>
   
   <url>

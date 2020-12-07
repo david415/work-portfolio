@@ -22,20 +22,35 @@ I believe that people's untrained mathematical intuition is enough
 of a prerequisite for understanding deeply technical and complex
 topics involving cryptography and probability theory.
 
-* [Introduction to Mix Networks and Katzenpost: Chaos Communications Camp 2019, Germany](https://www.youtube.com/watch?v=j3AUC0x_ju8)
 
-* [Modern Mix Network Design: BornHack, Bornholme Island, Denmark 2018](https://www.youtube.com/watch?v=DhBWKWQztdA)
+* [Zero Knowledge Summit](https://www.zksummit.com/), September 2019, Berlin, Germany: I hosted a mixnet workshop. No recording.
 
-* [How Mix Networks Improve Privacy: Bitcoin Wednesday, Amsterdam, Netherlands 2018](https://www.youtube.com/watch?v=7zIWrNqiTLI)
+* Chaos Communications Camp August 2019, Germany [Introduction to Mix Networks and Katzenpost](https://www.youtube.com/watch?v=j3AUC0x_ju8)
 
-* [Anonymizing Cryptocurrencies from Network Observers with Mix Networks: Privacy For Everyone, Berlin, Germany 2018](https://www.youtube.com/watch?v=dSydsoCe_SA)
+* Zcon1, June 2019, Split, Croatia: I hosted a mixnet workshop. No recordings.
 
-* Interview On German Public Radio 2018 [Transcript](https://www.swr.de/-/id=23267676/property=download/nid=659934/1rgk5mr/swr2-feature-20190320.pdf) and [Recording](https://www.swr.de/swr2/programm/sendungen/feature/swr2-feature-magier-der-digitalen-welt/-/id=659934/did=23267674/nid=659934/14hk4wf/index.html)
+* Real-world crypto and privacy summer school, June 2019, Sibenik, Croatia: I gave a lightening talk about mix networks and the Katzenpost project. No recordings.
 
-* [Practical Mix Network Design: Strong metadata protection for asynchronous messaging: Chaos Communications Congress, Leipzig, Germany 2017](https://media.ccc.de/v/34c3-8974-practical_mix_network_design)
+* Security in Times of Surveillance, June 2019, Eindhoven University, Netherlands: [Talk Abstract](https://www.win.tue.nl/eipsi/abstracts-2019.html#stainton). Recording not yet available. 
+
+* Bitcoin Wednesday, August 2018, Amsterdam, Netherlands [How Mix Networks Improve Privacy](https://www.youtube.com/watch?v=7zIWrNqiTLI)
+
+* [Privacy Enhancing Technology](https://petsymposium.org/2018/), July 2018, Barcelona, Spain: I gave a rump lightening talk about mix networks. No recording.
+
+* Privacy For Everyone, January 2018, Berlin, Germany [Anonymizing Cryptocurrencies from Network Observers with Mix Networks](https://www.youtube.com/watch?v=dSydsoCe_SA)
+
+* BornHack, August 2018, Bornholme Island, Denmark [Modern Mix Network Design](https://www.youtube.com/watch?v=DhBWKWQztdA)
+
+* Interview On German Public Radio August 2018, Bornholme Island, Denmark [Transcript](https://www.swr.de/-/id=23267676/property=download/nid=659934/1rgk5mr/swr2-feature-20190320.pdf) and [Recording](https://www.swr.de/swr2/programm/sendungen/feature/swr2-feature-magier-der-digitalen-welt/-/id=659934/did=23267674/nid=659934/14hk4wf/index.html)
+
+* Bitcoin Whitepaper Wednesday, 2017, New York city, US: I gave a mixnet talk. No Recordings.
+
+* Chaos Communications Congress, December 2017, Leipzig, Germany [Practical Mix Network Design: Strong metadata protection for asynchronous messaging](https://media.ccc.de/v/34c3-8974-practical_mix_network_design)
+
+* Chaos Communications Congress, December 2016, Hamburg, Germany: I gave a lightening talk about TCP injection attacks. No recording.
 
 
-I've also self-published a few youtube videos for explaining specific topics related to mix networks:
+I've also self-published a few youtube videos for explaining specific topics related to mix networks and anonymous communication:
 
 * [A Brief Introduction to mix networks](https://www.youtube.com/watch?v=1VMUb47QhfE)
 
