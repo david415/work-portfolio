@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on David Stainton</title>
+    <link>https://sphinx.rs/categories/projects/</link>
+    <description>Recent content in Projects on David Stainton</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://sphinx.rs/categories/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Open Source Projects</title>
+      <link>https://sphinx.rs/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sphinx.rs/projects/</guid>
+      <description>David Stainton&amp;rsquo;s open source and free software projects:
+The following specified projects are a small sample of my open source contributions and is not by any means an exhaustive list of the software projects I&amp;rsquo;ve worked on. I have for instance, contributed to various proprietary software projects which of course will not be mentioned here.
+Below you will find the repeated theme of networking and cryptography. Of course I know how to load information from databases, transform data, etc.</description>
+    </item>
+    
+  </channel>
+</rss>

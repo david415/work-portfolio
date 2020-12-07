@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docs on David Stainton</title>
+    <link>https://sphinx.rs/categories/docs/</link>
+    <description>Recent content in Docs on David Stainton</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://sphinx.rs/categories/docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>David Stainton&#39;s technical writing</title>
+      <link>https://sphinx.rs/docs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sphinx.rs/docs/</guid>
+      <description>Katzenpost Mix Network Design Specifications  These Katzenpost mix network design specification documents are the direct result of a three month collaboration with Yawning Angel, George Danezis, Claudia Diaz, Ania Piotrowska and myself. We did this work as part of the H2020 EU project Panoramix (Privacy and Accountability in Networks via Optimized Randomized Mix-nets).
+ Katzenpost Mix Network Operators Handbook
+ Introduction to Mix Networks and Anonymous Communication Networks</description>
+    </item>
+    
+  </channel>
+</rss>

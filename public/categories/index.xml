@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on David Stainton</title>
+    <link>https://sphinx.rs/categories/</link>
+    <description>Recent content in Categories on David Stainton</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://sphinx.rs/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docs</title>
+      <link>https://sphinx.rs/categories/docs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sphinx.rs/categories/docs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mentorships</title>
+      <link>https://sphinx.rs/categories/mentorships/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sphinx.rs/categories/mentorships/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://sphinx.rs/categories/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sphinx.rs/categories/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Public Speaking</title>
+      <link>https://sphinx.rs/categories/public-speaking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sphinx.rs/categories/public-speaking/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://sphinx.rs/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sphinx.rs/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sphinx.rs/publicspeaking/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sphinx.rs/docs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sphinx.rs/categories/docs/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sphinx.rs/tags/documentation/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sphinx.rs/categories/mentorships/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sphinx.rs/tags/mentorships/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sphinx.rs/mentorships/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sphinx.rs/projects/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sphinx.rs/categories/projects/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sphinx.rs/tags/projects/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sphinx.rs/categories/public-speaking/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sphinx.rs/tags/publicspeaking/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sphinx.rs/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

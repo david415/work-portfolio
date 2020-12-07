@@ -1,0 +1,67 @@
+## Basic Configuration
+
+baseurl = "https://sphinx.rs/"
+builddrafts = false
+canonifyurls = false
+languageCode = "en-US"
+
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+
+author = "David Stainton"
+title = "David Stainton"
+
+theme = "hugo-goa"
+
+## Hugo Built-in Features
+#disqusShortname = "" # Comment out to disable Disqus.
+#googleAnalytics = ""
+enableRobotsTXT = true
+
+## Site Settings
+[params]
+author = "David Stainton's work portfolio"
+intro = "Security Specialist / Software Developer / Public Speaker"
+description = "(curriculum vitae/résumé available upon request)"
+authorimage = ""
+dateformat = "Jan 2, 2006"
+
+## Site Meta Settings
+[params.meta]
+description = "David Stainton's work portfolio"
+keywords = ""
+
+## Social Accounts
+[params.social]
+#github = "david415"
+email = "dstainton415@gmail.com"
+
+## Extras
+[params.extra]
+copyright = ""
+poweredby = true
+highlightjs = true
+socialmarkup = true
+
+## Main Menu
+[[menu.main]]
+    name = "Open Source Software Projects"
+    weight = 100
+    identifier = "projects"
+    url = "/projects/"
+[[menu.main]]
+    name = "Technical Writing"
+    identifier = "documentation"
+    weight = 200
+    url = "/docs/"
+[[menu.main]]
+    name = "Public Speaking"
+    identifier = "speaking"
+    weight = 300
+    url = "/publicspeaking/"
+[[menu.main]]
+    name = "I mentor university students"
+    identifier = "mentorships"
+    weight = 300
+    url = "/mentorships/"

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>David Stainton</title>
+    <link>https://sphinx.rs/</link>
+    <description>Recent content on David Stainton</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://sphinx.rs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>David Stainton&#39;s Public Speaking</title>
+      <link>https://sphinx.rs/publicspeaking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sphinx.rs/publicspeaking/</guid>
+      <description>These talks primarily took place in various areas of Europe where I talked about mix networks, a kind of anonymous communication network.
+My goal in these talks is to make some complex topics understandable to a non-technical audience and to advocate for privacy enhancing technology, especially anonymous communication networks. I believe that people&amp;rsquo;s untrained mathematical intuition is enough of a prerequisite for understanding deeply technical and complex topics involving cryptography and probability theory.</description>
+    </item>
+    
+    <item>
+      <title>David Stainton&#39;s technical writing</title>
+      <link>https://sphinx.rs/docs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sphinx.rs/docs/</guid>
+      <description>Katzenpost Mix Network Design Specifications  These Katzenpost mix network design specification documents are the direct result of a three month collaboration with Yawning Angel, George Danezis, Claudia Diaz, Ania Piotrowska and myself. We did this work as part of the H2020 EU project Panoramix (Privacy and Accountability in Networks via Optimized Randomized Mix-nets).
+ Katzenpost Mix Network Operators Handbook
+ Introduction to Mix Networks and Anonymous Communication Networks</description>
+    </item>
+    
+    <item>
+      <title>Occasionally David Stainton mentors university students</title>
+      <link>https://sphinx.rs/mentorships/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sphinx.rs/mentorships/</guid>
+      <description>In 2017 I mentored Katharina Kohls from Bochum University (Germany) in the use of Tor and txtorcon to make customized Tor circuits for her Tor research project. Katharina&amp;rsquo;s work can be found here: https://www.infsec.ruhr-uni-bochum.de/lehrstuhl/mitarbeiter/kohls/
+ In 2020 I mentored Denis Varlakov from Tomsk State University (Siberia) in writing a comprehensive TCP injection detector which was directly inspired by my work on Honeybadger. Denis&amp;rsquo;s software is written in Rust and can be found here: https://github.</description>
+    </item>
+    
+    <item>
+      <title>Open Source Projects</title>
+      <link>https://sphinx.rs/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sphinx.rs/projects/</guid>
+      <description>David Stainton&amp;rsquo;s open source and free software projects:
+The following specified projects are a small sample of my open source contributions and is not by any means an exhaustive list of the software projects I&amp;rsquo;ve worked on. I have for instance, contributed to various proprietary software projects which of course will not be mentioned here.
+Below you will find the repeated theme of networking and cryptography. Of course I know how to load information from databases, transform data, etc.</description>
+    </item>
+    
+  </channel>
+</rss>

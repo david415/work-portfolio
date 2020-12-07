@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="David Stainton&#39;s work portfolio">
+
+
+<base href="https://sphinx.rs/">
+
+<title>David Stainton</title>
+
+<meta name="generator" content="Hugo 0.55.0-DEV" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400|Roboto+Slab:400,700|Roboto:300,300i,400,400i,500,500i,700,700i">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+<link rel="stylesheet" href="https://sphinx.rs/css/main.css">
+
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="theme-color" content="#ffffff">
+
+</head>
+<body lang="en-US">
+<div class="container">
+
+
+<header class="row text-left title">
+  <h1 class="title">Open Source Projects</h1>
+</header>
+<section id="category-pane" class="row meta">
+  
+</section>
+<section id="content-pane" class="row">
+  <div class="col-md-12 text-justify content">
+    <p>David Stainton&rsquo;s open source and free software projects:</p>
+
+<p>The following specified projects are a small sample of my open source
+contributions and is not by any means an exhaustive list of the
+software projects I&rsquo;ve worked on. I have for instance, contributed to
+various proprietary software projects which of course will not be
+mentioned here.</p>
+
+<p>Below you will find the repeated theme of networking and cryptography. Of course
+I know how to load information from databases, transform data, etc. However most
+of my independent computer security research involves minimal databases usage and
+mostly involves network and cryptography; my apologies if this is not the skillset you
+are looking for. These projects represent how I spend my free time and do not represent
+the totality of my skills as a software developer.</p>
+
+<p>See <a href="https://github.com/david415">David Stainton&rsquo;s github profile</a> for additional open source projects.</p>
+
+<p><strong>Rust</strong></p>
+
+<ul>
+<li><a href="https://github.com/sphinx-cryptography/mix_link">Noise based cryptographic network protocol for mixnets</a></li>
+<li><a href="https://github.com/sphinx-cryptography/aez">Rust ffi bindings to AEZ written in C</a></li>
+<li><a href="https://github.com/sphinx-cryptography/rust-sphinxcrypto">Sphinx cryptographic packet format create</a></li>
+<li><a href="https://github.com/sphinx-cryptography/rust-lioness">Lioness wide block cipher crate</a></li>
+<li><a href="https://github.com/sphinx-cryptography/ecdh_wrapper">ECDH wrapper crate</a></li>
+<li><a href="https://github.com/david415/cryptopals">My solutions to some of the cryptopals challenges</a></li>
+</ul>
+
+<p><strong>Golang</strong></p>
+
+<ul>
+<li><a href="https://github.com/katzenpost">Katzenpost</a></li>
+</ul>
+
+<p>From 2017 to around 2020 I&rsquo;ve worked on an anonymous communication
+network, specifically a decryption mix network known as
+Katzenpost. This open source software project started off as part of
+the Horizon 2020 Panoramix Project funded by the European Commision
+and included collaborations with some of the top European computer
+science researchers. The design of Katzenpost was largely based off of
+<a href="https://www.freehaven.net/anonbib/cache/loopix2017.pdf">The Loopix Anonymity System</a> which was published at 2017 Usenix
+Security and Privacy conference.</p>
+
+<p>This project included 3 months of collaborations with European
+academics to collaboratively write our design specification documents
+followed by several months of software development time. Katzenpost
+has also received grant funding from Samsung and NLNet.</p>
+
+<p><a href="https://nlnet.nl/project/katzenpost/index.html">See NLnet accouncement</a></p>
+
+<p><a href="https://samsungnext.com/whats-next/category/podcasts/decentralization-samsung-next-stack-zero-grant-recipients/">See Announcing the Samsung NEXT Stack Zero Grant recipients.</a></p>
+
+<ul>
+<li><a href="https://github.com/david415/honeybadger">Passive TCP injection attack detector ``Honeybadger&rdquo;</a> and <a href="https://honeybadger.readthedocs.org/">docs</a></li>
+</ul>
+
+<p>In 2014, shortly after the Edward Snowden document leaks I wrote
+Honeybadger, the most advanced detector of TCP injection
+attacks. Honeybadger uses my own classification of injection attacks:</p>
+
+<ol>
+<li>handshake hijack</li>
+<li>segment veto</li>
+<li>sloppy injection</li>
+<li>out-of-order coalesce injection</li>
+<li>censorship injection</li>
+</ol>
+
+<p>To read about my TCP injection classification see: <a href="https://github.com/david415/HoneyBadger_docs/blob/master/source/how-to-detect-TCP-injection-attacks.rst#tcp-injection-attack-categories">TCP injection attack categories</a></p>
+
+<p>During my work on Honeybadger I have also acted as an advisor for Google in the improvement of their Gopacket library.
+In particular I was coresponding with Graeme Connell ( gconnell@google.com ) and I&rsquo;ve also made contributions to a Google
+design document in collaboration with Sentryo (sentryo.net), specifically Laurent Hausermann ( laurent.hausermann@sentryo.net )
+in April of 2015. NOTE: I have never worked for Google; I am an independent security researcher!</p>
+
+<ul>
+<li><a href="https://github.com/google/gopacket/blob/master/bsdbpf/bsd_bpf_sniffer.go">BPF Sniffer API for Google&rsquo;s gopacket library</a></li>
+</ul>
+
+<p>I added the BSD BPF sniffer to Google&rsquo;s gopacket library as part of
+the previously mentioned Honeybadger software project. I did this so
+that Honeybadger could be efficiently used on BSD operating systems
+such as FreeBSD without having to use libpcap. Might as well have Google
+maintain the code for me, am I right? :)</p>
+
+<ul>
+<li><a href="https://github.com/subgraph/roflcoptor">Roflcoptor, Tor control port filter daemon for the Subgraph OS project</a></li>
+</ul>
+
+<p>I wrote the most sophisticated Tor control port filter daemon. The Tor
+control port allows applications to control the Tor daemon and perform
+various operations such as create an onion service or create a Tor
+circuit. With Roflcoptor acting as a proxy to the Tor control port,
+each application has a white list of allow Tor control port
+commands. This greatly reduces the risk of deanonymization when giving
+an application access to the Tor control port. (see Tor control port
+specification
+<a href="https://gitweb.torproject.org/torspec.git/tree/control-spec.txt">https://gitweb.torproject.org/torspec.git/tree/control-spec.txt</a> )</p>
+
+<ul>
+<li><p><a href="https://github.com/golang/go/issues/16681">Fixed a bug in the syscall module of the Go standard library</a></p></li>
+
+<li><p><a href="https://github.com/OpenBazaar/go-onion-transport">Wrote the IPFS Tor Onion transport</a></p></li>
+
+<li><p><a href="https://github.com/david415/ParasiticTraceroute">Parasitic TCP traceroute tool</a></p></li>
+</ul>
+
+<p>My Parasitic TCP traceroute tool makes use of the Linux kernel&rsquo;s
+nfqueue subsystem to mangle TCP packets of an existing connection in
+order to perform a traceroute. Such a traceroute might in some
+circumstances be useful for tracing a connection beyond an upstream NAT
+(network address translation) device.</p>
+
+<ul>
+<li><a href="https://github.com/Yawning/bulb">Contributed some code to Bulb, for the onion listener</a></li>
+</ul>
+
+<p>Bulb is useful for Tor integration and this feature I added allows for Go applications to easily create an Tor onion service.</p>
+
+<ul>
+<li><p><a href="https://github.com/subgraph/fw-daemon">Added SOCKS5 proxy to Subgraph OS Firewall daemon</a></p></li>
+
+<li><p><a href="https://github.com/subgraph/go-nfnetlink/issues/1">Reported a subtle bug in Subgraph&rsquo;s Linux netfilter queue library</a></p></li>
+</ul>
+
+<p><strong>Python</strong></p>
+
+<p>Most of my Python experience involves async IO networking with Twisted, however, I&rsquo;ve also used Tornado and blocking IO.
+Many of my Python project involve networking and cryptography; this is after all, the main theme repeated throughout my work portfolio.
+I don&rsquo;t have much experience with Python 3.</p>
+
+<ul>
+<li><p><a href="https://github.com/tahoe-lafs/tahoe-lafs">Contributed various feature patches to the Tahoe-LAFS project</a></p></li>
+
+<li><p><a href="https://github.com/applied-mixnetworks/sphinxmixcrypto">Forked Ian Goldberg&rsquo;s reference implementation of the Sphinx cryptographic packet format</a></p></li>
+</ul>
+
+<p>I made the Sphinx cryptographic packet library compatible with Python 2 and Python 3. I&rsquo;ve also upgraded some of the cryptographic primitives.</p>
+
+<ul>
+<li><p><a href="https://github.com/david415/pylioness">Wrote a Lioness wide block cipher library</a></p></li>
+
+<li><p><a href="https://github.com/david415/scan_tor_rfc5961">Wrote a active network scanner for a Linux kernel vulnerability that affected the Tor network</a> and <a href="https://lists.torproject.org/pipermail/tor-reports/2016-December/001105.html">sent a report to the tor-dev mailing list</a></p></li>
+
+<li><p><a href="https://github.com/david415/tor_partition_scanner">Wrote a Tor network partition detection scanner</a></p></li>
+
+<li><p><a href="https://github.com/meejah/txtorcon">Made various contributions to txtorcon</a></p></li>
+
+<li><p><a href="https://github.com/tahoe-lafs/pycryptopp">Assisted with pycryptopp maintenance releases</a></p></li>
+
+<li><p><a href="https://github.com/warner/foolscap">Assisted with Tor integration for Foolscap</a></p></li>
+
+<li><p><a href="https://github.com/david415/twistedcat">Wrote a socat-like tool using Twisted</a></p></li>
+
+<li><p><a href="https://github.com/david415/onionvpn">Wrote a Tor onion transport VPN</a></p></li>
+
+<li><p><a href="https://github.com/david415/txtorhttpproxy">Wrote Twisted http to tor proxy</a></p></li>
+</ul>
+
+  </div>
+</section>
+<section id="tag-pane" class="row meta">
+  
+</section>
+
+
+
+
+
+
+
+
+<section id="menu-pane" class="row menu text-center">
+  
+  
+  
+  
+  
+  <h4 class="text-center"><a class="menu-item" href="https://sphinx.rs/">home</a></h4>
+</section>
+
+
+
+<footer class="row text-center footer">
+  <hr />
+  
+  <h6 class="text-center copyright"></h6>
+  
+  <h6 class="text-center powered">Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/shenoybr/hugo-goa">Goa</a>.</h6>
+  
+  
+</footer>
+
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+
+<script type="text/javascript">
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
+
+
