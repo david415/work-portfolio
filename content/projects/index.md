@@ -18,12 +18,11 @@ mentioned here.
 
 Below you will find the repeated theme of networking and
 cryptography. Of course I know about high performance computing,
-databases, data transformations, systems programming etc. However
-most of my independent computer security research involves involves
-networking and cryptography; my apologies if this is not the skillset
-you are looking for. These projects represent how I spend my free time
-and do not represent the totality of my skills as a software
-developer.
+databases, data transformations, systems programming etc. Whereas most
+of my independent computer security research involves networking and
+cryptography; my apologies if these are not the skillsets you are
+looking for. These projects represent how I spend my free time and do
+not represent the totality of my skills as a software developer.
 
 See [David Stainton's github profile](https://github.com/david415) for additional open source projects.
 
@@ -96,9 +95,7 @@ various operations such as create an onion service or create a Tor
 circuit. With Roflcoptor acting as a proxy to the Tor control port,
 each application has a white list of allow Tor control port
 commands. This greatly reduces the risk of deanonymization when giving
-an application access to the Tor control port. (see Tor control port
-specification
-https://gitweb.torproject.org/torspec.git/tree/control-spec.txt )
+an application access to the Tor control port. (see [Tor control port specification](https://gitweb.torproject.org/torspec.git/tree/control-spec.txt) )
 
 * [Fixed a bug in the syscall module of the Go standard library](https://github.com/golang/go/issues/16681)
 
