@@ -21,7 +21,7 @@ enableRobotsTXT = true
 
 ## Site Settings
 [params]
-author = "David Stainton's work portfolio"
+author = "work portfolio: David Stainton"
 intro = "Security Specialist / Software Developer / Public Speaker"
 description = "(curriculum vitae/résumé available upon request)"
 authorimage = ""
@@ -29,7 +29,7 @@ dateformat = "Jan 2, 2006"
 
 ## Site Meta Settings
 [params.meta]
-description = "David Stainton's work portfolio"
+description = "work portfolio: David Stainton"
 keywords = ""
 
 ## Social Accounts
@@ -64,7 +64,7 @@ socialmarkup = true
     url = "/docs/"
 
 [[menu.main]]
-    name = "I mentor university students"
+    name = "Mentorships"
     identifier = "mentorships"
     weight = 300
     url = "/mentorships/"
