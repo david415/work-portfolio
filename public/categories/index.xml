@@ -1,17 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on David Stainton&#39;s Portfolio</title>
+    <title>Categories on Work Portfolio: David Stainton</title>
     <link>https://sphinx.rs/categories/</link>
-    <description>Recent content in Categories on David Stainton&#39;s Portfolio</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language>
-    
-	<atom:link href="https://sphinx.rs/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <description>Recent content in Categories on Work Portfolio: David Stainton</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://sphinx.rs/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Docs</title>
+      <title>docs</title>
       <link>https://sphinx.rs/categories/docs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -20,7 +15,7 @@
     </item>
     
     <item>
-      <title>Mentorships</title>
+      <title>mentorships</title>
       <link>https://sphinx.rs/categories/mentorships/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -29,7 +24,7 @@
     </item>
     
     <item>
-      <title>Projects</title>
+      <title>projects</title>
       <link>https://sphinx.rs/categories/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -38,7 +33,7 @@
     </item>
     
     <item>
-      <title>Public Speaking</title>
+      <title>public speaking</title>
       <link>https://sphinx.rs/categories/public-speaking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>David Stainton&#39;s Blog on Work Portfolio: David Stainton</title>
+    <link>https://sphinx.rs/blog/</link>
+    <description>Recent content in David Stainton&#39;s Blog on Work Portfolio: David Stainton</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sphinx.rs/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cryptocomrade: Cryptography in Golang</title>
+      <link>https://sphinx.rs/blog/golang_cryptography/</link>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sphinx.rs/blog/golang_cryptography/</guid>
+      <description>In this blog post I will share with you how I write cryptography software in Go. I won&amp;rsquo;t be discussing TLS here at all except to say that the only acceptable use for TLS is to talk to legacy systems such as &amp;ldquo;the web&amp;rdquo;. If you are building something new then the Noise Protocol Framework is a much better choice.
+This is a work in progress. I&amp;rsquo;ll periodically update this so as to fix mistakes and add more content.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,15 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mentorships on David Stainton&#39;s Portfolio</title>
+    <title>mentorships on Work Portfolio: David Stainton</title>
     <link>https://sphinx.rs/categories/mentorships/</link>
-    <description>Recent content in Mentorships on David Stainton&#39;s Portfolio</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language>
-    
-	<atom:link href="https://sphinx.rs/categories/mentorships/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <description>Recent content in mentorships on Work Portfolio: David Stainton</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://sphinx.rs/categories/mentorships/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>David Stainton&#39;s Mentorships</title>
       <link>https://sphinx.rs/mentorships/</link>
@@ -17,7 +12,7 @@
       
       <guid>https://sphinx.rs/mentorships/</guid>
       <description>In 2017 I mentored Katharina Kohls from Bochum University (Germany) in the use of Tor and txtorcon to make customized Tor circuits for her Tor research project. Katharina&amp;rsquo;s work can be found here: https://www.infsec.ruhr-uni-bochum.de/lehrstuhl/mitarbeiter/kohls/
- In 2020 I mentored Denis Varlakov from Tomsk State University (Siberia) in writing a comprehensive TCP injection detector which was directly inspired by my work on Honeybadger. Denis&amp;rsquo;s software is written in Rust and can be found here: https://github.</description>
+  In 2020 I mentored Denis Varlakov from Tomsk State University (Siberia) in writing a comprehensive TCP injection detector which was directly inspired by my work on Honeybadger. Denis&amp;rsquo;s software is written in Rust and can be found here: https://github.</description>
     </item>
     
   </channel>

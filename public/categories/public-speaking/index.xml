@@ -1,15 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Public Speaking on David Stainton&#39;s Portfolio</title>
+    <title>public speaking on Work Portfolio: David Stainton</title>
     <link>https://sphinx.rs/categories/public-speaking/</link>
-    <description>Recent content in Public Speaking on David Stainton&#39;s Portfolio</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language>
-    
-	<atom:link href="https://sphinx.rs/categories/public-speaking/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <description>Recent content in public speaking on Work Portfolio: David Stainton</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://sphinx.rs/categories/public-speaking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>David Stainton&#39;s Public Speaking</title>
       <link>https://sphinx.rs/publicspeaking/</link>

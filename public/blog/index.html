@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>David Stainton&#39;s Blog</title>
+    <meta name="description" content="Work Portfolio: David Stainton">
+    <meta name="author" content='David Stainton'>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" href="/sass/researcher.min.css">
+
+    
+
+    <link rel="alternate" type="application/rss+xml" href="https://sphinx.rs/blog/index.xml" title="Work Portfolio: David Stainton" />
+    
+        
+    
+</head>
+
+    <body><div class="container mt-5">
+    <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
+        <a class="navbar-brand mx-0 mr-sm-auto" href="https://sphinx.rs">Work Portfolio: David Stainton</a>
+        <div class="navbar-nav flex-row flex-wrap justify-content-center">
+            
+                
+                
+                    <a class="nav-item nav-link" href="/david_stainton.pdf">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755S12 12 8 12s-5 1.755-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/></svg> Resume
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/publicspeaking/">
+                        Public Speaking
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/blog/">
+                        Blog
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/projects/">
+                        Projects
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/writing/">
+                        Writing
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/mentorships/">
+                        Mentorships
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/contact/">
+                        Contact
+                    </a>
+                    
+                
+            
+        </div>
+    </nav>
+</div>
+<hr>
+<div id="content">
+<div class="container">
+    <h1>David Stainton&#39;s Blog</h1>
+
+    
+    
+    
+    * <a href="https://sphinx.rs/blog/golang_cryptography/">2021-01-13 | cryptocomrade: Cryptography in Golang</a>
+    <br />
+    <br />    
+    
+    <p>In this blog post I will share with you how I write cryptography software in Go.
+I won&rsquo;t be discussing TLS here at all except to say that the only acceptable
+use for TLS is to talk to legacy systems such as &ldquo;the web&rdquo;. If you are building
+something new then the Noise Protocol Framework is a <strong>much</strong> better choice.</p>
+<p>This is a work in progress. I&rsquo;ll periodically update this so as to fix mistakes and
+add more content.</p>
+<p>The cryptocomrade git repo is meant to accompany this blog post by providing code samples
+with a CC0 license:</p>
+<p><a href="https://github.com/david415/cryptocomrade">https://github.com/david415/cryptocomrade</a></p>
+<p>However I only added a few simple hash examples so far. I plan to add more soon.</p>
+<h1 id="preliminaries">Preliminaries</h1>
+<p>Cryptography applications should almost always make use of
+<strong>Memguard</strong> and <strong>Subtle</strong>.  We can to some extent prevent
+<a href="https://www.usenix.org/legacy/event/sec08/tech/full_papers/halderman/halderman.pdf">cold boot attacks</a>
+by using Memguard. By using Subtle constant time comparison functions
+you can prevent timing side channels from leaking secret information.</p>
+<p>If you are filling up a buffer with random bytes you should do so using
+&ldquo;crypto/rand&rdquo; and NOT &ldquo;math/rand&rdquo;. If this operation fails just panic
+because if the device ran out of entropy no cryptography can be safely used.</p>
+<p>That having been said, sometimes when we write crypto code we choose
+to ignore errors where appropriate to do so like in the case where the
+io.Read interface semantics don&rsquo;t exactly line up with the API being used.
+What I mean is there are cases where a crypto api like a stream
+cipher will ALWAYS return successfully from an io.Read
+operation. Therefore to ignore io.Read errors in such cases is
+acceptable and almost always makes your API cleaner because your
+function signatures will be shorter when not having to return an error.</p>
+<h2 id="subtle">Subtle</h2>
+<p>Use the &ldquo;crypto/subtle&rdquo; package:</p>
+<p><a href="https://golang.org/pkg/crypto/subtle/">https://golang.org/pkg/crypto/subtle/</a></p>
+<p>Here&rsquo;s an example of the constant time byte slice comparison:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">subtle</span>.<span style="color:#a6e22e">ConstantTimeCompare</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;values not equal&#34;</span>)
+    }
+</code></pre></div><p>And here&rsquo;s an <a href="https://github.com/katzenpost/core/blob/master/sphinx/sphinx.go#L276">example in the wild</a> written by <a href="https://github.com/Yawning">Yawning Angel</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">subtle</span>.<span style="color:#a6e22e">ConstantTimeCompare</span>(<span style="color:#a6e22e">pkt</span>[<span style="color:#a6e22e">macOff</span>:<span style="color:#a6e22e">macOff</span><span style="color:#f92672">+</span><span style="color:#a6e22e">crypto</span>.<span style="color:#a6e22e">MACLength</span>], <span style="color:#a6e22e">mac</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">replayTag</span>[:], <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;sphinx: invalid packet, MAC mismatch&#34;</span>)
+	}
+</code></pre></div><p>In this case Yawning is using it to compare two MACs, a good use case for the <strong>&ldquo;crypto/subtle&rdquo;</strong> module
+and this is exactly why the &ldquo;crypto/hmac&rdquo; module has a wrapper function for &ldquo;subtle.ConstantTimeCompare&rdquo; called
+&ldquo;Equal&rdquo; <a href="https://golang.org/pkg/crypto/hmac/#Equal">https://golang.org/pkg/crypto/hmac/#Equal</a> which returns a bool.
+Use either one but pick one and use it to avoid leaking timing information.</p>
+<h2 id="memguard">Memguard</h2>
+<p><strong>MemGuard: Software enclave for storage of sensitive information in memory.</strong></p>
+<p>See <a href="https://github.com/awnumar/memguard">https://github.com/awnumar/memguard</a> for the complete feature set.</p>
+<p>In the author&rsquo;s words:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">This package attempts to reduce the likelihood of sensitive data being
+exposed when in memory. It aims to support all major operating systems
+and is written in pure Go.
+</code></pre></div><p>Memguard has thorough <a href="https://godoc.org/github.com/awnumar/memguard">documentation</a>
+and plenty of <a href="https://github.com/awnumar/memguard/tree/master/examples">examples</a>, however,
+here&rsquo;s an extensive example found in the wild:</p>
+<p><a href="https://github.com/katzenpost/doubleratchet/blob/master/ratchet.go">https://github.com/katzenpost/doubleratchet/blob/master/ratchet.go</a></p>
+<p>It&rsquo;s certainly possible to use Memguard and not get any benefit from it. This can happen if you
+are making superfluous copies of your key material. Such copies essentially defeat the purpose of
+using Memguard. Instead you are suppose to pass around references to Memguard&rsquo;s opaque types
+and use those to guard the key material.</p>
+<h1 id="cryptographic-hashing">Cryptographic Hashing</h1>
+<p><a href="https://leastauthority.com/blog/blake2-harder-better-faster-stronger-than-md5/">Use Blake2 because it&rsquo;s harder, better, faster, stronger</a>.</p>
+<p>The <a href="https://www.blake2.net/">Blake2 website</a> says:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">BLAKE2b is more efficient on 64-bit CPUs and BLAKE2s is more efficient on
+8-bit, 16-bit, or 32-bit CPUs
+</code></pre></div><p>So it seems to me that Blake2b is good enough for most use cases since many mobile devices
+these days have 64bit CPUs. Blake2 is very versitile and has multiple hash output lengths,
+can be used as a KDF with it&rsquo;s XOF (extensible output function) or a MAC (message
+authentication code) with it&rsquo;s built-in keying mechanism. Blake2 is
+not vulnerable to the <a href="https://en.wikipedia.org/wiki/Length_extension_attack">length extension attack</a>
+so an HMAC construction is not needed.</p>
+<p>The <a href="https://tools.ietf.org/html/rfc7693">rfc7693</a> states that:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Both BLAKE2b and BLAKE2s are believed to be highly secure and perform
+well on any platform, software, or hardware. BLAKE2 does not require
+a special &#34;HMAC&#34; (Hashed Message Authentication Code) construction
+for keyed message authentication as it has a built-in keying
+mechanism.
+</code></pre></div><p>I suggest using the Blake2b implementation from the supplementary Go cryptography libraries:</p>
+<p><a href="https://golang.org/x/crypto/blake2b">https://golang.org/x/crypto/blake2b</a></p>
+<p>Hash a byte slice:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#75715e">// SimplexHash is the simplest usage of a hash function
+</span><span style="color:#75715e">// and is suitable if you only have one use case.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">SimplexHash</span>(<span style="color:#a6e22e">data</span> []<span style="color:#66d9ef">byte</span>) []<span style="color:#66d9ef">byte</span> {
+	<span style="color:#a6e22e">out</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">blake2b</span>.<span style="color:#a6e22e">Sum256</span>(<span style="color:#a6e22e">data</span>)
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">out</span>[:]
+}
+</code></pre></div><p>Instead you probably want to use something like this for multiple
+use cases:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#75715e">// Hash hashes the data with contextInfo used as the key
+</span><span style="color:#75715e">// for blake2&#39;s keying mechanism. contextInfo is meant to
+</span><span style="color:#75715e">// be a human readable string that ensures each use case of
+</span><span style="color:#75715e">// the hash function will have different outputs.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Hash</span>(<span style="color:#a6e22e">contextInfo</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">data</span> []<span style="color:#66d9ef">byte</span>) ([]<span style="color:#66d9ef">byte</span>, <span style="color:#66d9ef">error</span>) {
+	<span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">contextInfo</span>) &gt; <span style="color:#a6e22e">blake2b</span>.<span style="color:#a6e22e">Size</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;contextInfo size error&#34;</span>)
+	}
+	<span style="color:#a6e22e">h</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">blake2b</span>.<span style="color:#a6e22e">New256</span>([]byte(<span style="color:#a6e22e">contextInfo</span>))
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">err</span>
+	}
+	<span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Write</span>(<span style="color:#a6e22e">data</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">err</span>
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Sum</span>(<span style="color:#66d9ef">nil</span>), <span style="color:#66d9ef">nil</span>
+}
+</code></pre></div><h1 id="key-derivation-function">Key Derivation Function</h1>
+<p>Just use <a href="https://eprint.iacr.org/2010/264.pdf">HKDF</a>.
+Specifically, HKDF-SHA256 is probably sufficient for most use
+cases when your initial key material is 32 bytes in length.
+You MUST only feed your KDF a key which has uniform entropy. If
+you need to derive keys from a password or passphrase then you should
+first use a &ldquo;key stretching function&rdquo; which I discuss in the <strong>Hashing
+Passwords</strong> section below.</p>
+<p>Remember how I mentioned above that Blake2 is versatile and can be
+used as a KDF and a MAC? Well, I suggest we NOT using Blake2 for all
+of these use cases in a single application because if you do and it
+becomes weakened or compromised by a cryptographic attack then several
+parts of your construction will be broken instead of just one.</p>
+<p>(But if you insist on using Blake2b as a KDF this is
+how you&rsquo;d do it: <strong>here&rsquo;s an example: blah blah url goes here</strong>)</p>
+<p>I suggest using the HKDF implementation from the supplementary Go cryptography libraries:</p>
+<p><a href="https://golang.org/x/crypto/hkdf">https://golang.org/x/crypto/hkdf</a></p>
+<p>Here&rsquo;s a simple example usage:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#75715e">// KDF returns a slice of derive keysNum number of derived keys of size keySize.
+</span><span style="color:#75715e">// The given secret must be a uniform entropy secret (ie not a password) and
+</span><span style="color:#75715e">// info is an optional non-secret which may be omitted.
+</span><span style="color:#75715e">//
+</span><span style="color:#75715e">// Note: in practice you probably don&#39;t want to use this particular function
+</span><span style="color:#75715e">// but instead use the HKDF directly.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">KDF</span>(<span style="color:#a6e22e">secret</span>, <span style="color:#a6e22e">salt</span>, <span style="color:#a6e22e">info</span> []<span style="color:#66d9ef">byte</span>, <span style="color:#a6e22e">keysNum</span>, <span style="color:#a6e22e">keySize</span> <span style="color:#66d9ef">int</span>) ([][]<span style="color:#66d9ef">byte</span>, <span style="color:#66d9ef">error</span>) {
+	<span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">salt</span>) <span style="color:#f92672">!=</span> <span style="color:#a6e22e">hash</span>().<span style="color:#a6e22e">Size</span>() {
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;wrong salt size&#34;</span>)
+	}
+	<span style="color:#a6e22e">hash</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sha256</span>.<span style="color:#a6e22e">New</span>
+	<span style="color:#a6e22e">hkdf</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">hkdf</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">hash</span>, <span style="color:#a6e22e">secret</span>, <span style="color:#a6e22e">salt</span>, <span style="color:#a6e22e">info</span>)
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">keys</span> [][]<span style="color:#66d9ef">byte</span>
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">keysNum</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+		<span style="color:#a6e22e">key</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">byte</span>, <span style="color:#a6e22e">keySize</span>)
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ReadFull</span>(<span style="color:#a6e22e">hkdf</span>, <span style="color:#a6e22e">key</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+			panic(<span style="color:#a6e22e">err</span>)
+		}
+		<span style="color:#a6e22e">keys</span> = append(<span style="color:#a6e22e">keys</span>, <span style="color:#a6e22e">key</span>)
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">keys</span>, <span style="color:#66d9ef">nil</span>
+}
+</code></pre></div><p>The <strong>hkdf type</strong> implements the <strong>io.Reader</strong> interface so you can read from it with any
+size byte slice that you&rsquo;d like. Usually I use it to generate 32 byte keys.</p>
+<h1 id="hashing-passwords">Hashing Passwords</h1>
+<p>Use Argon2 because it won the <a href="https://www.password-hashing.net/">Password Hashing Competition</a>.
+It&rsquo;s suitable to use if you are storing password hashes in a database or if you have to derive
+cryptographic keys from a password or passphrase.</p>
+<p>I suggest using the Argon2id implementation from the supplementary Go cryptography libraries:</p>
+<p><a href="https://golang.org/x/crypto/argon2">https://golang.org/x/crypto/argon2</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Argon2id is side-channel resistant and provides better brute-
+force cost savings due to time-memory tradeoffs than Argon2i. 
+</code></pre></div><p>This example consumes 64MB of memory. So depending on your device
+and your application you&rsquo;ll want to adjust this parameter:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#75715e">// HashPassword returns a 32 byte cryptographic key given
+</span><span style="color:#75715e">// a password and an entropic salt.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">HashPassword</span>(<span style="color:#a6e22e">password</span>, <span style="color:#a6e22e">salt</span> []<span style="color:#66d9ef">byte</span>) []<span style="color:#66d9ef">byte</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">argon2</span>.<span style="color:#a6e22e">IDKey</span>(<span style="color:#a6e22e">password</span>, <span style="color:#a6e22e">salt</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">64</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1024</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">32</span>)
+}
+</code></pre></div><p>Note that the last parameter is key size, thus you won&rsquo;t need to use
+Argon2 with HKDF because you can specify any key size you&rsquo;d
+like. However the previously mentioned HKDF uses the io.Reader
+interface which makes it quite easy to derive multiple keys without
+having to fiddle with byte slices. It wouldn&rsquo;t hurt to process the
+output of Argon2 with HKDF and the performance hit is probably
+negligible.</p>
+<h1 id="message-authentication-code">Message Authentication Code</h1>
+<p>First choice: Just use NaCl auth because it exists and it&rsquo;s easy to use.
+NaCl auth uses HMAC-SHA512:</p>
+<p><a href="https://pkg.go.dev/golang.org/x/crypto/nacl/auth">https://pkg.go.dev/golang.org/x/crypto/nacl/auth</a></p>
+<p>Otherwise use Blake2b&rsquo;s keyed hash feature for a MAC:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#75715e">// Blake2bMAC is a MAC that uses Blake2b&#39;s keyed hash mechanism
+</span><span style="color:#75715e">// instead of an HMAC construction. The output is of size MACSize.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Blake2bMAC</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">data</span> []<span style="color:#66d9ef">byte</span>) []<span style="color:#66d9ef">byte</span> {
+	<span style="color:#a6e22e">h</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">blake2b</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">MACSize</span>, <span style="color:#a6e22e">key</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		panic(<span style="color:#a6e22e">err</span>)
+	}
+	<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Write</span>(<span style="color:#a6e22e">data</span>)
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Sum</span>(<span style="color:#66d9ef">nil</span>)
+}
+
+<span style="color:#75715e">// ValidBlake2bMAC reports whether Blake2b messageMAC is a valid MAC tag for message.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">ValidBlake2bMAC</span>(<span style="color:#a6e22e">message</span>, <span style="color:#a6e22e">messageMAC</span>, <span style="color:#a6e22e">key</span> []<span style="color:#66d9ef">byte</span>) <span style="color:#66d9ef">bool</span> {
+	<span style="color:#a6e22e">expectedMAC</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Blake2bMAC</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">message</span>)
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">hmac</span>.<span style="color:#a6e22e">Equal</span>(<span style="color:#a6e22e">messageMAC</span>, <span style="color:#a6e22e">expectedMAC</span>)
+}
+</code></pre></div><p>If you need the MAC tag to be 32 bytes long are already using Blake2b
+as a hash then you should select a different MAC such as
+<strong>HMAC-SHA256</strong>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">mac</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;crypto/hmac&#34;</span>
+	<span style="color:#e6db74">&#34;crypto/sha256&#34;</span>
+)
+
+<span style="color:#75715e">// HMACSHA256 returns the HMAC-SHA256 authentication code for the given message and key.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">HMACSHA256</span>(<span style="color:#a6e22e">message</span>, <span style="color:#a6e22e">key</span> []<span style="color:#66d9ef">byte</span>) []<span style="color:#66d9ef">byte</span> {
+	<span style="color:#a6e22e">mac</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">hmac</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">sha256</span>.<span style="color:#a6e22e">New</span>, <span style="color:#a6e22e">key</span>)
+	<span style="color:#a6e22e">mac</span>.<span style="color:#a6e22e">Write</span>(<span style="color:#a6e22e">message</span>)
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">mac</span>.<span style="color:#a6e22e">Sum</span>(<span style="color:#66d9ef">nil</span>)
+}
+
+<span style="color:#75715e">// ValidMAC reports whether messageMAC is a valid HMAC tag for message.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">ValidHMACSHA256</span>(<span style="color:#a6e22e">message</span>, <span style="color:#a6e22e">messageMAC</span>, <span style="color:#a6e22e">key</span> []<span style="color:#66d9ef">byte</span>) <span style="color:#66d9ef">bool</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">hmac</span>.<span style="color:#a6e22e">Equal</span>(<span style="color:#a6e22e">messageMAC</span>, <span style="color:#a6e22e">HMACSHA256</span>(<span style="color:#a6e22e">message</span>, <span style="color:#a6e22e">key</span>))
+}
+</code></pre></div><h1 id="aead-ciphers">AEAD Ciphers</h1>
+<p>AEAD stands for Authenticated Encryption with Associated Data.  Unless
+the AEAD has a synthetic IV, nonce reuse is not safe. The way this
+situation was handled in the past was to turn the nonce into a counter
+and always increment the nonce with each use. This turns out to be
+very difficult to do properly in practice. So the preferred solution
+is instead to use bigger nonces that can safely be randomly
+generated. That is, the nonce size should be big enough that randomly
+generating it has an extremely low probability of a nonce being
+reused.</p>
+<p>But I would instead recommend the AEAD known as XSalsa20Poly1305 or
+XChacha20Poly1305 which is composed of the Poly1305 MAC and the
+XSalsa20 or the XChacha20 stream cipher.  Salsa20 was the original but
+with it&rsquo;s 8 byte nonce it required careful nonce management. The X
+variant, XSalsa20 increased the nonce size to 24 bytes. According to
+the <a href="https://libsodium.gitbook.io/doc/advanced/stream_ciphers/xsalsa20">libsodium docs</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">But with XSalsa20&#39;s longer nonce, it is safe to generate nonces using
+randombytes_buf() for every message encrypted with the same key without
+having to worry about a collision.
+</code></pre></div><p>I&rsquo;m not clear on what the differences are between XSalsa20 and
+XChacha20 except that initially Salsa20 had a security proof and
+Chacha20 did not because of being newer. Whereas they now both have
+security proofs and so do their bigger nonce variants.</p>
+<p>The older recommendation would be to use the AES-GCM AEAD but I think we&rsquo;re
+past that phase in cryptography history now (although NIST lags behind of course).
+<a href="https://www.imperialviolet.org/2013/10/07/chacha20.html">In agl&rsquo;s words</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">These are primitives developed by Dan Bernstein and are fast,
+secure, have high quality, public domain implementations, are
+naturally constant time and have nearly perfect key agility.
+</code></pre></div><p>Use <a href="https://nacl.cr.yp.to/secretbox.html">NaCl secretbox</a> to
+symmetrically encrypt small messages (small enough to fit in memory).
+NaCl secretbox uses XSalsa20 and Poly1305. I really like the NaCl
+secretbox API for golang, it&rsquo;s very simple:</p>
+<p><a href="https://pkg.go.dev/golang.org/x/crypto/nacl/secretbox">https://pkg.go.dev/golang.org/x/crypto/nacl/secretbox</a></p>
+<p>Another good choice would be to use XChacha20Poly1305 AEAD cipher directly:</p>
+<p><a href="https://pkg.go.dev/golang.org/x/crypto/chacha20poly1305">https://pkg.go.dev/golang.org/x/crypto/chacha20poly1305</a></p>
+<p>If your encryption payload is too big to fit in memory then you could use the &ldquo;age&rdquo; API.
+See the next section &ldquo;Encrypting Files&rdquo;.</p>
+<h2 id="asymmetric-authenticated-encryption">Asymmetric Authenticated Encryption</h2>
+<p>Use <a href="https://nacl.cr.yp.to/box.html">NaCl box</a> box to asymmetrically encrypt small messages.
+Box uses Curve25519, XSalsa20 and Poly1305.</p>
+<p><a href="https://pkg.go.dev/golang.org/x/crypto/nacl/box">https://pkg.go.dev/golang.org/x/crypto/nacl/box</a></p>
+<h1 id="encrypting-files">Encrypting Files</h1>
+<p><em>This section is also known as the <strong>Encrypting Bigass Files</strong> section.</em></p>
+<p>If you have some bigass files to encrypt then using an AEAD cipher
+directly without a buffering layer will result in loading the
+entire plaintext into memory all at once. Not good if your file is
+bigger than your device&rsquo;s available memory. Instead just use <strong>age</strong>
+because it exists and is easy to use. Although <strong>age</strong> is a
+commandline tool it&rsquo;s also a cleanly written Go encryption library.</p>
+<p>Age has support for encrypting using symmetric and asymmetric ciphers.</p>
+<p>Specification:
+<a href="https://docs.google.com/document/d/11yHom20CrsuX8KQJXBBw04s80Unjv8zCg_A7sPAX_9Y/preview">https://docs.google.com/document/d/11yHom20CrsuX8KQJXBBw04s80Unjv8zCg_A7sPAX_9Y/preview</a></p>
+<p>Source code:
+<a href="https://github.com/FiloSottile/age/">https://github.com/FiloSottile/age/</a></p>
+<p>Golang API Docs:
+<a href="https://pkg.go.dev/filippo.io/age">https://pkg.go.dev/filippo.io/age</a></p>
+<h1 id="cryptographic-transports">Cryptographic Transports</h1>
+<p>TODO: discuss the <a href="https://noiseprotocol.org/">Noise Protocol Framework</a>.</p>
+<p>Here&rsquo;s an example of Noise being used with the New Hope Simple hybrid forward secret handshake modifier, it&rsquo;s full handshake protocol descriptor string is: <strong>Noise_XXhfs_25519+NewHopeSimple_ChaChaPoly_Blake2b</strong>.</p>
+<p><a href="https://github.com/katzenpost/core/blob/master/wire/session.go">https://github.com/katzenpost/core/blob/master/wire/session.go</a></p>
+<p>Of course the next step is to make Kyber work with Noise. I haven&rsquo;t gotten around to it yet although <a href="https://github.com/mcginty/snow/issues/39">it&rsquo;s been done in Rust already</a>.</p>
+<h1 id="summary">Summary</h1>
+<ul>
+<li>Hash: Blake2b256</li>
+<li>KDF: HKDF-SHA256</li>
+<li>Password Hashing: Argon2</li>
+<li>MAC: Blake2b, HMAC-SHA256</li>
+<li>Encrypting Bigass Files: &ldquo;age&rdquo;</li>
+<li>Symmetric Encryption: NaCl Secretbox or XChaCha20-Poly1305 AEAD</li>
+<li>Asymmetric Encryption: NaCl Box</li>
+<li>Transport Encryption: Noise w/ XX handshake pattern</li>
+</ul>
+
+    
+</div>
+
+        </div><div id="footer" class="mb-5">
+    
+        <hr>
+        <div class="container text-center">
+            <a href="https://sphinx.rs"><small>Copyright 2021 David Stainton</small></a>
+        </div>
+    
+</div>
+</body>
+</html>
